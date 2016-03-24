@@ -3,6 +3,7 @@ autocmd vimenter * NERDTree
 autocmd vimenter * filetype indent plugin on
 autocmd vimenter * :20winc>
 autocmd vimenter * :set number
+autocmd vimenter * wincmd p
 
 let g:nerdtree_tabs_open_on_console_startup=1
 let NERDTreeShowBookmarks=1
@@ -33,7 +34,7 @@ set smartindent
 
 " Tlist
 "let Tlist_Auto_Open=1
-let tlist_php_settings='php;c:class;f:function' 
+"let tlist_php_settings='php;c:class;f:function' 
 let Tlist_Use_Right_Window=1
 let Tlist_Show_One_File=1
 "let Tlist_Use_Horiz_Window=1
@@ -45,17 +46,17 @@ let g:tagbar_show_visibility = 1
 " autocmd FileType * nested :call tagbar#autoopen(0)
 
 " Code sniffer
-let g:phpqa_codesniffer_args = "--standard=PSR2"
-let g:phpqa_codesniffer_cmd='/home/przemek/.phpbrew/php/php-5.3.29/bin/phpcs'
+"let g:phpqa_codesniffer_args = "--standard=PSR2"
+"let g:phpqa_codesniffer_cmd='/home/przemek/.phpbrew/php/php-5.3.29/bin/phpcs'
 ""let g:phpqa_codesniffer_cmd='/home/polcode/.phpbrew/php/php-5.3.28/bin/phpcs'
-let g:phpqa_messdetector_autorun = 0
+"let g:phpqa_messdetector_autorun = 0
 " Don't run codesniffer on save (default = 1)
-let g:phpqa_codesniffer_autorun = 0
-let g:phpqa_open_loc = 1
+"let g:phpqa_codesniffer_autorun = 0
+"let g:phpqa_open_loc = 1
 
-let g:phpcomplete_index_composer_command='/usr/local/bin/composer'
+"let g:phpcomplete_index_composer_command='/usr/local/bin/composer'
 "let g:phpcomplete_index_composer_command="php ../composer.phar"
-autocmd FileType  php setlocal omnifunc=phpcomplete_extended#CompletePHP
+"autocmd FileType  php setlocal omnifunc=phpcomplete_extended#CompletePHP
 
 colorscheme monokai
 colorscheme wells-colors
@@ -114,33 +115,33 @@ let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
     \ }
 
-let g:symfony_app_console_path= "src/app/console"
-map <Leader>o :execute ":!"g:symfony_enable_shell_cmd<CR>
+"let g:symfony_app_console_path= "src/app/console"
+"map <Leader>o :execute ":!"g:symfony_enable_shell_cmd<CR>
 
 " first set path
 set path+=**
 
 " jump to a twig view in symfony
-function! s:SfJumpToView()
-    mark C
-    normal! ]M
-    let end = line(".")
-    normal! [m
-    try
-        call search('v[^.:]+.html.twig', '', end)
-        normal! gf
-    catch
-        normal! g`C
-        echohl WarningMsg | echomsg "Template file not found" | echohl None
-    endtry
-endfunction
-com! SfJumpToView call s:SfJumpToView()
+"function! s:SfJumpToView()
+"    mark C
+"    normal! ]M
+"    let end = line(".")
+"    normal! [m
+"    try
+"        call search('v[^.:]+.html.twig', '', end)
+"        normal! gf
+"    catch
+"        normal! g`C
+"        echohl WarningMsg | echomsg "Template file not found" | echohl None
+"    endtry
+"endfunction
+"com! SfJumpToView call s:SfJumpToView()
 
 " create a mapping only in a Controller file
-autocmd BufEnter *Controller.php nmap <buffer><leader>v :SfJumpToView<CR>
+"autocmd BufEnter *Controller.php nmap <buffer><leader>v :SfJumpToView<CR>
 
 " Change default PHP manual shortcut
-let g:php_manual_online_search_shortcut = '<C-S-k>'
+"let g:php_manual_online_search_shortcut = '<C-S-k>'
 
 set wildignore+=*/web/css/*,*/web/js/*
 
